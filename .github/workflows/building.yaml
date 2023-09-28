@@ -32,7 +32,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: user/app:latest
+        tags: githubactionsneel.azurecr.io/aspcoresample:${{ github.sha }}
  #  - name: Build the frontend image and push it to ACR
  #     uses: docker/build-push-action@v2
  #    with:
