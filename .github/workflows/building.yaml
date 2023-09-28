@@ -28,9 +28,9 @@ jobs:
         username: githubactionsneel
         password: A4BccVelV8JsFcEBXC1BxPZFWTmvdgZwCks2vuK8Jw+ACRDLVoIX
  
-    - name: Build the frontend image and push it to ACR
-      uses: docker/build-push-action@v2
-      with:
-        push: true
-        tags: githubactionsneel.azurecr.io/aspcoresample:${{ github.sha }}
-        file: Dockerfile
+ #  - name: Build the frontend image and push it to ACR
+ #     uses: docker/build-push-action@v2
+ #    with:
+ #      push: true
+ #      tags: githubactionsneel.azurecr.io/aspcoresample:${{ github.sha }}
+ #       file: Dockerfile
