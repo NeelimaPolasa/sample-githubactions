@@ -1,1 +1,26 @@
-xyz
+name: Docker
+
+on: 
+  push:
+    branches:
+      - main
+      
+
+jobs:
+  build:
+    name: Build Container image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Log into registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: githubactionsneel.azurecr.io
+           username: githubactionsneel
+           password: A4BccVelV8JsFcEBXC1BxPZFWTmvdgZwCks2vuK8Jw+ACRDLVoIX
+      - run: |
+          docker build . -t githubactionsneel.azurecr.io/appdb:${{ github.sha }}
+          docker push githubactionsneel.azurecr.io/appdb:${{ github.sha }}
+          
+      
