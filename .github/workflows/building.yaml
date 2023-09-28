@@ -1,7 +1,9 @@
 name: docker_build_push_acr
  
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - feature/*
  
 jobs:
   docker_build_push_acr:
@@ -22,13 +24,13 @@ jobs:
     - name: 'Docker Login'
       uses: azure/docker-login@v1
       with:
-        login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
+        login-server: githubactionsneel.azurecr.io
+        username: githubactionsneel
+        password: A4BccVelV8JsFcEBXC1BxPZFWTmvdgZwCks2vuK8Jw+ACRDLVoIX
  
     - name: Build the frontend image and push it to ACR
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: tamopsgithubacr.azurecr.io/aspcoresample:${{ github.sha }}
-        file: aspnet-core-dotnet-core/Dockerfile
+        tags: githubactionsneel.azurecr.io/aspcoresample:${{ github.sha }}
+        file: Dockerfile
